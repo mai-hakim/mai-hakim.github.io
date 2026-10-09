@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mai Hakim — Projects</title>
+<meta name="description" content="Mai Hakim: PaperShield (a letter helper for older adults), an agentic app-testing tool on n8n, and the PaperShield workflow on n8n.">
+<meta name="theme-color" content="#0F6B6B">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-row">
+    <a class="me" href="#top"><span class="mono" aria-hidden="true">MH</span> Mai Hakim</a>
+    <nav aria-label="Sections"><a href="#papershield">PaperShield</a><a href="#agents">Project A</a><a href="#workflow">Project B</a><a href="#how">How I work</a></nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <p class="eyebrow">Portfolio · October 2026</p>
+    <h1>Mai Hakim</h1>
+    <p class="lead">I design calm, accessible tools for older adults and the people who help them, and I test them with AI agents inside fixed rules.</p>
+    <p class="hero-links">
+      <a class="btn primary" href="https://mai-hakim.github.io/papershield/">Open PaperShield</a>
+      <a class="btn" href="https://www.linkedin.com/in/maihakim">LinkedIn</a>
+      <a class="btn" href="https://github.com/mai-hakim">GitHub</a>
+    </p>
+    <ul class="pills" aria-label="Three projects">
+      <li><b>PaperShield</b> — live app, no AI deciding</li>
+      <li><b>Project A</b> — agentic testing on n8n</li>
+      <li><b>Project B</b> — PaperShield workflow on n8n</li>
+    </ul>
+  </section>
+
+  <!-- ================= PaperShield ================= -->
+  <section id="papershield" class="project wrap">
+    <div class="p-head">
+      <img class="p-logo" src="assets/icon.svg" alt="" width="56" height="63">
+      <div><p class="eyebrow">Live app</p><h2>PaperShield</h2><p class="tag">Photograph a letter. Get one clear answer: what to do, and by when.</p></div>
+    </div>
+    <div class="split">
+      <div class="text">
+        <p>Bills, insurance notices, government forms and scams all look official. PaperShield reads the letter <b>on the phone</b> and gives one of four answers. Each answer has a colour, an icon and a word, never colour alone. A <b>fixed, published rule table</b> decides, so the same letter always gets the same answer.</p>
+        <ul class="ticks">
+          <li>🟢 No action · 🟠 Action needed · 🟣 Ask someone you trust (ready SMS / WhatsApp text) · 🔴 Signs of a scam (slow pulse, never flashing)</li>
+          <li>Letter summary, "See the letter", a magnifier you drag with your finger, A / A+, mute, and Listen on every screen</li>
+          <li>"I don't understand" tries a new way each time: simpler words, read slowly, the line on the letter, ask someone</li>
+          <li>Delete the letter (default) or save it on the phone only. No account, no upload, works offline</li>
+        </ul>
+        <p class="result"><b>Tested (real runs):</b> 59 of 59 automated checks passed at phone size in light and dark mode. axe-core found 0 WCAG A/AA violations on 13 screens. The 5 sample letters give the same answers as before. On 5 synthetic photos read on the device: 5 of 5 correct answers. <b>Not yet tested with older adults.</b></p>
+        <p class="links"><a class="btn primary" href="https://mai-hakim.github.io/papershield/">Live app</a><a class="btn" href="https://github.com/mai-hakim/papershield">GitHub + README</a></p>
+      </div>
+      <figure class="phones">
+        <img src="assets/ps-scam.png" alt="PaperShield result: red light, warning sign and the words Careful — signs of a scam" loading="lazy" width="390" height="844">
+        <img src="assets/ps-summary.png" alt="PaperShield letter summary card with who sent it, money, date, signature and what to do" loading="lazy" width="390" height="844">
+      </figure>
+    </div>
+    <details class="more"><summary>Video (84 s) and architecture</summary>
+      <div class="media">
+        <video controls preload="metadata" playsinline src="assets/papershield-demo.webm" width="390" height="844" aria-label="PaperShield demo video: a fake IRS letter is caught as a scam"></video>
+        <img src="assets/ps-architecture.png" alt="Diagram: photo, text reader, facts, scam signs first, fixed rule table, one of four results, evidence — all on the phone" loading="lazy">
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= Project A ================= -->
+  <section id="agents" class="project wrap">
+    <div class="p-head"><span class="p-num" aria-hidden="true">A</span>
+      <div><p class="eyebrow">Project A · n8n + Playwright + Gemini</p><h2>Agentic App Tester</h2><p class="tag">Agents explore, rules decide.</p></div></div>
+    <div class="split">
+      <div class="text">
+        <p>Four AI agents use a web app the way four people might: <b>Rosa</b> with low vision at 200% zoom, <b>Walter</b> with a hand tremor whose taps land a few pixels off, <b>Grace</b> using the app for the first time, and <b>Harold</b>, who is scared of scams. Each agent looks at the screen, decides where to tap, and makes a new plan when it gets stuck.</p>
+        <p>The agents only <b>explore and describe</b>. Every finding must be confirmed by a <b>fixed check</b>: axe-core, tap size, spacing, font size, zoom, broken links, console errors, or a tap that changed nothing. Fixed rules in n8n decide severity. Anything an agent "feels" but no check confirms is listed as unconfirmed, with no severity.</p>
+        <div class="stats">
+          <div class="stat"><b>2 apps</b>tested: PaperShield and TodoMVC (a public demo app)</div>
+          <div class="stat"><b>4 × 2</b>personas × runs per app, inside n8n</div>
+          <div class="stat"><b>33</b>confirmed findings on TodoMVC (9 serious)</div>
+          <div class="stat"><b>99% / 75%</b>finding overlap between runs (TodoMVC / PaperShield)</div>
+        </div>
+        <p class="result"><b>It found real bugs in my own app.</b> A hand-tremor agent's shaky tap landed on "Scan a document" and exposed a <b>crash</b> that had been in PaperShield from the start. The agents also found "Read aloud" buttons with no visible feedback and a hidden skip link. Each one was confirmed by a fixed check, fixed, and gone in the next run. <b>One finding is not fixed yet:</b> a shaky tap on one sample button still missed in 1 of 2 runs. The tool also caught its own mistakes, 2 false errors and 2 checks that were too strict, and I fixed them before the final numbers.</p>
+        <p class="links"><a class="btn primary" href="https://github.com/mai-hakim/agentic-app-tester">GitHub + README</a><a class="btn" href="assets/agents-report-papershield.html">Report: PaperShield</a><a class="btn" href="assets/agents-report-todomvc.html">Report: TodoMVC</a></p>
+      </div>
+      <figure><img src="assets/a-architecture.png" alt="Diagram: n8n starts the run; four persona agents look, decide with Gemini, act in a real browser; fixed checks confirm findings; n8n applies fixed severity rules, measures consistency and saves a report" loading="lazy"></figure>
+    </div>
+    <details class="more"><summary>n8n workflow, video and the original test harness</summary>
+      <div class="media">
+        <img src="assets/a-canvas-agents.png" alt="n8n canvas of the Agentic App Tester workflow" loading="lazy">
+        <video controls preload="metadata" playsinline src="assets/agents-demo.webm" aria-label="Project A demo video: an AI agent with a simulated hand tremor uses an app and a failure is caught by a fixed check"></video>
+        <img src="assets/a-canvas-harness.png" alt="n8n canvas of the original fixed-rule test harness" loading="lazy">
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= Project B ================= -->
+  <section id="workflow" class="project wrap">
+    <div class="p-head"><span class="p-num" aria-hidden="true">B</span>
+      <div><p class="eyebrow">Project B · n8n + Gemini</p><h2>PaperShield letter workflow</h2><p class="tag">AI reads the facts. Fixed rules decide. A person approves.</p></div></div>
+    <div class="split">
+      <div class="text">
+        <p>A letter comes in through an n8n form. The AI extracts <b>facts only</b>, and each fact comes with the exact quote it used, checked against the letter. The same rule table as the app decides the answer. Then a <b>person approves or rejects</b> before n8n makes a calendar reminder, writes the log sheet and emails the result. Failures go to an errors sheet. All data is synthetic.</p>
+        <p class="result"><b>Tested (real runs):</b> 7 test cases: normal, missing data, wrong data, duplicate, AI unsure, AI tool down, and human rejects. Final run: <b>7 of 7 passed</b>. Reading the emails also caught a real bug that the status checks missed ("Respond by null."). I fixed it and added a test for it.</p>
+        <p class="links"><a class="btn primary" href="https://github.com/mai-hakim/papershield-n8n-workflow">GitHub + README</a></p>
+      </div>
+      <figure><img src="assets/b-architecture.png" alt="Diagram: letter in, check input, duplicate check, AI facts only, fixed rules, human approval, calendar, result email, log sheet; errors sheet for bad input and AI tool down" loading="lazy"></figure>
+    </div>
+    <details class="more"><summary>n8n workflow and video</summary>
+      <div class="media">
+        <img src="assets/b-canvas.png" alt="n8n canvas of the PaperShield letter workflow with 23 nodes" loading="lazy">
+        <video controls preload="metadata" playsinline src="assets/workflow-demo.webm" aria-label="Project B demo video: a scam letter is caught and the reviewer rejects it; an unsure AI reading is flagged"></video>
+      </div>
+    </details>
+  </section>
+
+  <section id="how" class="wrap how">
+    <h2>How I work</h2>
+    <div class="cards">
+      <div class="card"><h3>I design and decide</h3><p>What each tool does, the four answers, the look, the accessibility choices and the test cases. <b>Claude (an AI assistant) wrote the code.</b></p></div>
+      <div class="card"><h3>Honest numbers</h3><p>Every number on this page comes from a real run, and each README lists what was <i>not</i> tested. The personas are simulations. No real users have tested these tools yet.</p></div>
+      <div class="card"><h3>About n8n</h3><p>In my team capstone, n8n was used only for testing. PaperShield and both n8n projects are my own independent builds, inspired by a capstone idea.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p><b>Mai Hakim</b> · <a href="https://www.linkedin.com/in/maihakim">LinkedIn</a> · <a href="https://github.com/mai-hakim">GitHub</a></p>
+  <p class="muted">Sample letters, names and addresses in these projects are made up.</p>
+</footer>
+</body>
+</html>
