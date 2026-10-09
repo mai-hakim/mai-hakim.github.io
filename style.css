@@ -66,3 +66,12 @@ figure img, .media img { width: 100%; height: auto; border-radius: 14px; border:
 .card p { margin: 0; }
 .foot { text-align: center; padding: 2rem 1rem 3rem; }
 @media (max-width: 520px) { html { font-size: 18px; } h1 { font-size: 2.1rem; } h2 { font-size: 1.5rem; } .project { padding: 1.1rem 1rem 0.8rem; border-radius: 18px; } }
+/* phone: the menu scrolls away with the page instead of covering the text */
+@media (max-width: 640px) {
+  .top { position: static; }
+  .top-row { justify-content: center; padding-top: 0.4rem; padding-bottom: 0.2rem; }
+  .top nav { justify-content: center; gap: 0 0.9rem; }
+  .top nav a { padding: 0.45rem 0.1rem; font-size: 0.95rem; min-height: 44px; display: inline-flex; align-items: center; }
+  html { scroll-padding-top: 0.5rem; }
+}
+.media video { background: #0F2A30; }
